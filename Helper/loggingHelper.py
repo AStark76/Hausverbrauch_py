@@ -1,7 +1,7 @@
 import logging
 import os
 import time
-import enum
+import LogType
 
 """_summary_
 """
@@ -15,13 +15,15 @@ class Log:
             self.log_file = file_name
             
         logging.basicConfig(filename=self.log_file)
-        self.function_list = {"warning": self.warning, "error": self.error, "info": self.info}   
+        self.function_list = {LogType.get_name(LogType.LOGTYPE.WARNING) : self.warning, 
+                              LogType.get_name(LogType.LOGTYPE.Error): self.error, 
+                              LogType.get_name(LogType.LOGTYPE.Info): self.info}   
         
     """_summary_
     """
-    def log(self, type: str, message:str):
+    def log(self, type: LogType, message:str):
         zeit = time.strftime("%d.%m.%Y - T %H:%M%:%S")
-        self.function_list[type](message,zeit)
+        self.function_list[LogType.get_name(type)](message,zeit)
         
     """_summary_
     """
@@ -38,10 +40,4 @@ class Log:
     def info(self, message:str, zeit:str):
         logging.info('%s - %s' , zeit, message)
         
-    
-"""_summary_
-"""
-class LogType(enum.auto):
-    Error = "Error"
-    Warning = "Warning"
-    Info = "Info"
+   

@@ -5,6 +5,7 @@
 import sqlite3 as sql
 from . import loggingHelper
 from . import DataObject
+from . import LogType
 
 
 class DatabaseHelper:
@@ -14,7 +15,7 @@ class DatabaseHelper:
     def __init__(self, in_Db:str) -> None:
         self.Db = in_Db
         self.open()
-        self.logger = loggingHelper
+        self.logger = loggingHelper.Log()
         
     """_summary_
     """
@@ -55,7 +56,15 @@ class DatabaseHelper:
         self.close();
         return result
 
-    def insert(self, in_table: DataObject) -> bool:
+    """_summary_
+    """
+    def insert(self, in_table:str, in_data: DataObject) -> bool:
         result = False
+        if(None is in_table):
+            self.logger.error(LogType.Error, "\n in_table can't be None.")
+            raise Exception("in_table can't be None.")
+        if(None is in_data):
+            self.logger.error(LogType.Error, "\n in_data can't be None.")
+            raise Exception("in_data can't be None.")
         
-
+        
