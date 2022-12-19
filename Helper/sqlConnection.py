@@ -10,18 +10,20 @@ from . import LogType
 
 class DatabaseHelper:
     
+    connection: sql.Connection
+    cursor: sql.Connection.cursor
     """_summary_
     """
     def __init__(self, in_Db:str) -> None:
+        if (None is in_Db):
+            in_Db = 'haushalt.db'
         self.Db = in_Db
-        self.open()
         self.logger = loggingHelper.Log()
-        
-    """_summary_
-    """
-    def open(self):
-        self.connection = sql.connect('.\haushalt.db')
+    
+    def open(self) -> None:
+        self.connection = sql.connect(self.Db)
         self.cursor = self.connection.cursor()
+    
     
     def close(self) -> None:
         self.connection.close()
@@ -34,26 +36,30 @@ class DatabaseHelper:
             raise Exception("in_Category can't be none.")
             return False
         try:
-            self.open()
+            connection = self.get_connection()
+            cursor = connection.cursor()
             query = "Insert into categories ( cat_name )  values ('"+in_Category +"');"
-            result = self.cursor.execute(query)
-            self.connection.commit()
-            self.close()
+            result = cursor.execute(query)
+            connection.commit()
+            connection.close()
             return None is not result
         except TypeError:
             self.logger.log("Error", "Failed: \n" + query)
         return True
         
+    
+        
         """_summary_
         """
     def select(self, in_table: str, in_columns: str = "*")-> list:
-        if (ch):
+        if (None is in_table):
             raise Exception("in_table can't be none.")
+        #self.open(self)
         self.open()
-        query : str = 'select {columns} from "{table}" ;'.format(columns=in_columns, table=in_table)
+        query : str = ('SELECT {columns} FROM {table};').format(columns=in_columns, table=in_table)
         data  = self.cursor.execute(query)
         result = data.fetchall()
-        self.close();
+        self.close()
         return result
 
     """_summary_

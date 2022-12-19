@@ -9,5 +9,5 @@ class LOGTYPE(Enum):
     
 
 def get_name(in_data) ->str:
-    result = str(in_data).split(".")[1]
+    result = str(in_data)
     return result

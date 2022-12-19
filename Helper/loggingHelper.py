@@ -1,7 +1,7 @@
 import logging
 import os
 import time
-import LogType
+from Helper import LogType
 
 """_summary_
 """
@@ -16,13 +16,13 @@ class Log:
             
         logging.basicConfig(filename=self.log_file)
         self.function_list = {LogType.get_name(LogType.LOGTYPE.WARNING) : self.warning, 
-                              LogType.get_name(LogType.LOGTYPE.Error): self.error, 
-                              LogType.get_name(LogType.LOGTYPE.Info): self.info}   
+                              LogType.get_name(LogType.LOGTYPE.ERROR): self.error, 
+                              LogType.get_name(LogType.LOGTYPE.INFO): self.info}   
         
     """_summary_
     """
     def log(self, type: LogType, message:str):
-        zeit = time.strftime("%d.%m.%Y - T %H:%M%:%S")
+        zeit = time.ctime()
         self.function_list[LogType.get_name(type)](message,zeit)
         
     """_summary_

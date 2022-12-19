@@ -1,3 +1,8 @@
-import LogType
+"""Hello World test"""
 
-print(LogType.get_name(LogType.LOGTYPE.ERROR))
+from tkinter import *
+from tkinter.ttk import *
+
+root = Tk()
+label = Label(root, text="Hello WorlD")
+label.pack()
