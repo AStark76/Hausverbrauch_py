@@ -1,3 +1,6 @@
+"""
+logger
+"""
 import logging
 import os
 import time
@@ -21,7 +24,7 @@ class Log:
         
     """_summary_
     """
-    def log(self, type: LogType, message:str):
+    def Log(self, type: LogType, message:str):
         zeit = time.ctime()
         self.function_list[LogType.get_name(type)](message,zeit)
         
