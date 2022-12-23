@@ -38,7 +38,7 @@ class DatabaseHelper:
         try:
             connection = sql.connect(self.Db)
             cursor = connection.cursor()
-            query = 'Insert into categories ( cat_name )  values ("{in_Category}");'.format(in_category=in_category)
+            query = 'Insert into categories ( cat_name )  values ("{in_category}");'.format(in_category=in_category)
             result = cursor.execute(query)
             connection.commit()
             connection.close()

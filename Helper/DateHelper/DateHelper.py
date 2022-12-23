@@ -17,6 +17,9 @@ def date_to_int(in_time_parts: list[str])->int:
 """
 def int_to_date(in_int_date: int)->datetime:
     time_string = str(in_int_date)
-    result = datetime(year=int(str(time_string)[:4]), month=int(str(time_string)[4:6]), day=int(str(time_string)[6:]))
+    year :str = str(time_string)[0:4]
+    month :str = str(time_string)[4:6]
+    day : str = str(time_string)[6:]
+    result = datetime(year=int(year), month=int(month), day=int(day))
     
     return result
