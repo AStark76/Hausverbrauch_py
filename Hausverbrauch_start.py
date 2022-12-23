@@ -54,7 +54,7 @@ class Window(tk.Tk):
         self.date_label.grid(column=1, row=2, sticky="w")
                 
         self.value_lable = tk.Label(text="Wert")
-        self.value_lable.grid(column=0,row=4, sticky="w")
+        self.value_lable.grid(column=0,row=4, sticky="w", padx=5)
         
         self.value = tk.StringVar()
         self.value_entry = tk.Entry(textvariable=self.value)
@@ -99,7 +99,7 @@ class Window(tk.Tk):
 
     def build_category_cb(self):
         self.category_cb_lable = ttk.Label(self, text="Kategorie")
-        self.category_cb_lable.grid(column=0, row=0, sticky="w")
+        self.category_cb_lable.grid(column=0, row=0, sticky="w", padx=5)
         self.my_category: str = tk.StringVar()
         self.comboBoxValue = self.get_categories()
         self.categoryCB = ttk.Combobox(
@@ -147,7 +147,7 @@ class Window(tk.Tk):
 
     def prepare_date(self)->int:
         time_parts = self.selected_date.split(".")
-        result = dh.date_to_int(time_parts)ä
+        result = dh.date_to_int(time_parts)
         
         return result
 
@@ -157,7 +157,7 @@ class Window(tk.Tk):
         self.sql.insert_category(new_category)
         self.build_category_cb()
     
-    
+
     """_summary_
     """
     def reset_form(self):
