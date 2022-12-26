@@ -32,7 +32,7 @@ class Window(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
         self.geometry("820x700")
-        self.sql = DatabaseHelper('.\Data\Haushalt.db')
+        self.sql = DatabaseHelper('.\data\haushalt.db')
         self.init_widgets()
 
         """_summary_
@@ -76,8 +76,8 @@ class Window(tk.Tk):
         self.build_treeview()
         self.build_plot_frame()
         self.plot(self.loaded_data)   
-        self.select_btn = tk.Button(text="Auswählen", command=self.display_select())
-        self.select_btn.grid(column=2, row=4, padx=5)
+        # self.select_btn = tk.Button(text="Auswählen", command=self.display_select())
+        # self.select_btn.grid(column=2, row=4, padx=5)
         
     
     def build_plot_frame(self, in_first_render: bool=False):
@@ -227,7 +227,7 @@ class Window(tk.Tk):
         
     def display_select(self):
         test = self.tv.selection_get
-        print(test(0))
+        #print(test(0))
 
 if __name__ == "__main__":
     window = Window()

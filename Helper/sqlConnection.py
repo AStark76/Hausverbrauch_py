@@ -16,7 +16,7 @@ class DatabaseHelper:
     """
     def __init__(self, in_Db:str) -> None:
         if (None is in_Db):
-            in_Db = 'haushalt.db'
+            in_Db = '.\data\haushalt.db'
         self.Db = in_Db
         self.logger = loggingHelper.Log()
     
@@ -91,7 +91,7 @@ class DatabaseHelper:
         
         query = "INSERT INTO {table} ({columns}) VALUES ({values});".format(table=table, columns=columns, values=values)
         try:
-            self.logger.log(LogType.LOGTYPE.INFO, query)
+            self.logger.Log(LogType.LOGTYPE.INFO, query)
             self.connection.execute(query)
             self.connection.commit()
             self.close()
