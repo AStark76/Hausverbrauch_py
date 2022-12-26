@@ -76,6 +76,8 @@ class Window(tk.Tk):
         self.build_treeview()
         self.build_plot_frame()
         self.plot(self.loaded_data)   
+        self.select_btn = tk.Button(text="Auswählen", command=self.display_select())
+        self.select_btn.grid(column=2, row=4, padx=5)
         
     
     def build_plot_frame(self, in_first_render: bool=False):
@@ -211,8 +213,6 @@ class Window(tk.Tk):
         
         
         
-        
-        
     def get_y(self, in_data:list[d.Data])->list[int]:
         result : list[int] = []
         for item in in_data:
@@ -225,6 +225,10 @@ class Window(tk.Tk):
             result.append(item.datum)
         return result
         
+    def display_select(self):
+        test = self.tv.selection_get
+        print(test(0))
+
 if __name__ == "__main__":
     window = Window()
 
