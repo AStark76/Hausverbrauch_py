@@ -7,11 +7,11 @@ from datetime import *
 
 """_summary_
 """
-def date_to_int(in_time_parts: list[str])->int:
-    time_parts= in_time_parts
+def date_to_int(in_date: str)->int:
+    time_parts= in_date.split('.')
     result = datetime(year=int(time_parts[2]), month=int(time_parts[1]), day=int(time_parts[0])).strftime("%Y%m%d")
     
-    return result
+    return int(result)
 
 """_summary_
 """

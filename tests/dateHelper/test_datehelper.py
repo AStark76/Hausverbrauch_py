@@ -9,3 +9,11 @@ def test_Convert_int_to_date()->None:
     result = dh.int_to_date(test_data)
     
     assert result == expect
+    
+    
+def test_date_to_int()->None:
+    test_data : str = datetime.datetime(year=2022, month=1, day=1).strftime("%d.%m.%Y")
+    expect: int = 20220101
+    result = dh.date_to_int(test_data)
+    
+    assert result == expect

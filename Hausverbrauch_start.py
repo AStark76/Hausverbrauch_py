@@ -148,8 +148,7 @@ class Window(tk.Tk):
 
 
     def prepare_date(self)->int:
-        time_parts = self.selected_date.split(".")
-        result = dh.date_to_int(time_parts)
+        result = dh.date_to_int(self.selected_date)
         
         return result
 
